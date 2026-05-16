@@ -30,9 +30,9 @@ tw-story {
 tw-passage {
   background: #ffffff; 
   color: #000000; 
-  text-align: left; /* Исправлено: теперь строго по левому краю на ПК */
+  text-align: left; 
   font-family: 'Montserrat', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  font-size: 20px; 
+  font-size: 28px; 
   line-height: 1.6;
   
   width: 95%; 
@@ -135,7 +135,7 @@ tw-link:hover, .enchantment-link:hover {
   background-color: #f0f8ff; 
 }
 
-/* Box-панель со стрелками */
+/* Боковая панель со стрелками */
 tw-sidebar {
   display: flex;
   flex-direction: column;
@@ -175,7 +175,99 @@ tw-icon:hover {
 
 /* ==========================================================================
    2. АДАПТИВНЫЙ СТИЛЬ ДЛЯ СМАРТФОНОВ (ЭКРАНЫ ДО 768px)
-   ================================================================</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Начало" tags="" position="22000,11900" size="100,100">Оцените результаты лабораторных исследований грунта. В каком диапазоне находится текущая концентрация общих нефтяных углеводородов (TPH)?
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  
+  tw-story {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Исправлено: теперь контент корректно листается сверху вниз */
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+    background-image: radial-gradient(#003399 1px, transparent 1px);
+    background-size: 25px 25px; 
+    padding: 30px 16px 110px 16px; /* Защитные отступы сверху и снизу (чтобы текст не уходил под плавающую кнопку) */
+    box-sizing: border-box;
+  }
+
+  tw-passage {
+    background: #ffffff;
+    font-size: 18px; 
+    text-align: left; 
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 14px;
+    margin: 0 auto; 
+    border: 3px solid #003399;
+    box-shadow: 0 8px 24px rgba(0, 51, 153, 0.08);
+  }
+
+  tw-passage h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  tw-passage h2 {
+    font-size: 19px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-left: 4px solid #003399;
+    padding-left: 10px;
+  }
+
+  tw-passage hr {
+    margin: 20px 0;
+  }
+
+  tw-passage ul {
+    padding-left: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  tw-passage li {
+    font-size: 17px;
+    padding-left: 25px;
+    margin-bottom: 10px;
+  }
+
+  tw-passage li:before {
+    width: 10px;
+    height: 10px;
+    top: 9px;
+  }
+
+  tw-link, .enchantment-link {
+    font-size: 18px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+  }
+
+  tw-sidebar {
+    position: fixed;
+    top: auto;
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    flex-direction: row; 
+    justify-content: center;
+    width: auto;
+    z-index: 999;
+  }
+
+  tw-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+    margin-bottom: 0;
+    margin-right: 0; 
+    box-shadow: 0 8px 20px rgba(0, 51, 153, 0.25); 
+  }
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Начало" tags="" position="22000,11900" size="100,100">Оцените результаты лабораторных исследований грунта. В каком диапазоне находится текущая концентрация общих нефтяных углеводородов (TPH)?
 
 [[Более 50 000 мг/кг]]
 [[Менее 50 000 мг/кг|Нам доступна биоремедиация]]</tw-passagedata><tw-passagedata pid="2" name="Более 50 000 мг/кг" tags="" position="22000,11700" size="100,100">Естественная биодеградация невозможна. Необходима предварительная механическая или физико-химическая очистка
