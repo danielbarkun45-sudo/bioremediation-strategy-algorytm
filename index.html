@@ -12,10 +12,10 @@
 <tw-storydata name="Алгоритм " startnode="1" creator="Twine" creator-version="2.6.0" format="Harlowe" format-version="3.3.4" ifid="DFC1CA67-3C04-4E83-9E6C-FEA9C3C49092" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 /* ==========================================================================
-   ПК И НОУТБУКИ (БАЗОВЫЙ СТИЛЬ)
+   1. БАЗОВЫЙ СТИЛЬ ДЛЯ КОМПЬЮТЕРОВ И НОУТБУКОВ
    ========================================================================== */
 
-/* Центрирование окна и сетка */
+/* Центрирование окна и инженерная сетка */
 tw-story {
   display: flex;
   justify-content: center;
@@ -26,7 +26,7 @@ tw-story {
   background-size: 40px 40px; 
 }
 
-/* Блок с текстом (Основная карточка) */
+/* Основная карточка с текстом */
 tw-passage {
   background: #ffffff; 
   color: #000000; 
@@ -44,7 +44,7 @@ tw-passage {
   box-shadow: 0 8px 24px rgba(0, 51, 153, 0.08); 
 }
 
-/* Название шага */
+/* Заголовок этапа (# в Twine) */
 tw-passage h1 {
   color: #003399; 
   font-size: 34px;
@@ -62,7 +62,7 @@ tw-link, .enchantment-link {
   text-decoration: none;
   font-weight: 600;
   font-size: 26px; 
-  margin: 15px 0 0 0; 
+  margin: 20px 0 0 0; 
   padding: 16px 32px; 
   border: 2px solid #003399; 
   border-radius: 12px;
@@ -77,7 +77,7 @@ tw-link:hover, .enchantment-link:hover {
   background-color: #f0f8ff; 
 }
 
-/* Позиционирование боковой панели со стрелками */
+/* Боковая панель со стрелками */
 tw-sidebar {
   display: flex;
   flex-direction: column;
@@ -88,18 +88,21 @@ tw-sidebar {
   z-index: 10;
 }
 
-/* Кнопки возврата */
+/* Круглые кнопки возврата */
 tw-icon {
   display: flex;
   justify-content: center;
   align-items: center;
+  
   color: #ffffff; 
   background: #003399; 
   border: 3px solid #003399; 
   border-radius: 50%; 
+  
   width: 76px;
   height: 76px;
   font-size: 42px; 
+  
   margin-bottom: 20px; 
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(0, 51, 153, 0.15);
@@ -116,60 +119,63 @@ tw-icon:hover {
 }
 
 /* ==========================================================================
-   АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА (ЭКРАНЫ МЕНЕЕ 768px)
+   2. АДАТИВНЫЙ СТИЛЬ ДЛЯ СМАРТФОНОВ (ЭКРАНЫ ДО 768px)
    ========================================================================== */
 @media screen and (max-width: 768px) {
   
-  /* Уменьшаем шаг сетки на фоне, чтобы не рябило */
   tw-story {
-    background-size: 25px 25px;
-    padding: 15px; /* Защитные отступы по краям экрана смартфона */
-    align-items: flex-start; /* Разрешаем скролл, если текст длинный */
-    padding-top: 30px;
+    background-image: none; /* Полностью убираем точки, чтобы не ломали край экрана */
+    background-color: #f4f6f9; /* Премиальный плотный серый фон */
+    padding: 16px;
+    align-items: center; 
+    min-height: 100vh;
+    box-sizing: border-box;
   }
 
-  /* Сжимаем карточку и уменьшаем шрифт */
   tw-passage {
-    font-size: 18px; /* Оптимальный размер для чтения с телефона */
-    padding: 30px 20px; /* Меньше внутренние отступы, больше места для текста */
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 51, 153, 0.05);
-    margin-bottom: 100px; /* Место снизу, чтобы текст не перекрывался плавающими кнопками */
+    font-size: 18px; /* Уменьшаем шрифт, чтобы текст не рвался */
+    text-align: left; /* Убираем justify, на смартфонах он создает дыры */
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 14px;
+    margin: 0 auto 90px auto; /* Отступ снизу, чтобы карточка не залезала под кнопку навигации */
   }
 
-  /* Корректируем мобильный заголовок */
   tw-passage h1 {
     font-size: 22px;
     margin-bottom: 15px;
   }
 
-  /* Адаптируем варианты выбора под размер пальца */
   tw-link, .enchantment-link {
-    font-size: 16px;
-    padding: 12px 20px;
+    font-size: 18px;
+    padding: 14px 20px;
     border-radius: 10px;
-    margin-top: 12px;
+    margin-top: 15px;
   }
 
-  /* Переносим кнопки возврата вниз экрана (Мобильный UX) */
+  /* Переносим панель навигации в самый вниз экрана по центру */
   tw-sidebar {
     position: fixed;
     top: auto;
-    bottom: 20px; /* Прижимаем к нижнему краю */
-    left: 20px;   /* Слева */
-    transform: none;
-    flex-direction: row; /* Располагаем стрелки горизонтально в ряд, если их две */
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); /* Жесткое центрирование на любых смартфонах */
+    flex-direction: row; 
+    justify-content: center;
+    width: auto;
     z-index: 999;
   }
 
-  /* Уменьшаем габариты круглых кнопок на телефоне */
+  /* Компактный размер круглой кнопки под палец */
   tw-icon {
-    width: 55px;
-    height: 55px;
-    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
     margin-bottom: 0;
-    margin-right: 12px; /* Отступ между кнопками в ряду */
-    box-shadow: 0 4px 12px rgba(0, 51, 153, 0.2);
+    margin-right: 0; 
+    box-shadow: 0 8px 20px rgba(0, 51, 153, 0.25); 
   }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Начало" tags="" position="22000,11900" size="100,100">Оцените результаты лабораторных исследований грунта. В каком диапазоне находится текущая концентрация общих нефтяных углеводородов (TPH)?
 
