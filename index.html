@@ -11,7 +11,11 @@
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Алгоритм .</tw-noscript></noscript></tw-story>
 <tw-storydata name="Алгоритм " startnode="1" creator="Twine" creator-version="2.6.0" format="Harlowe" format-version="3.3.4" ifid="DFC1CA67-3C04-4E83-9E6C-FEA9C3C49092" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
-/* Центрирование окна и создание сетки на заднем плане */
+/* ==========================================================================
+   ПК И НОУТБУКИ (БАЗОВЫЙ СТИЛЬ)
+   ========================================================================== */
+
+/* Центрирование окна и сетка */
 tw-story {
   display: flex;
   justify-content: center;
@@ -22,7 +26,7 @@ tw-story {
   background-size: 40px 40px; 
 }
 
-/* Блок с текстом */
+/* Блок с текстом (Основная карточка) */
 tw-passage {
   background: #ffffff; 
   color: #000000; 
@@ -40,7 +44,7 @@ tw-passage {
   box-shadow: 0 8px 24px rgba(0, 51, 153, 0.08); 
 }
 
-/* Стиль для заголовка этапа (Знак # в начале строки в Twine) */
+/* Название шага */
 tw-passage h1 {
   color: #003399; 
   font-size: 34px;
@@ -84,31 +88,25 @@ tw-sidebar {
   z-index: 10;
 }
 
-/* Иконки возврата — теперь жестко зафиксированы без прозрачности */
+/* Кнопки возврата */
 tw-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  
   color: #ffffff; 
   background: #003399; 
   border: 3px solid #003399; 
   border-radius: 50%; 
-  
   width: 76px;
   height: 76px;
   font-size: 42px; 
-  
   margin-bottom: 20px; 
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(0, 51, 153, 0.15);
-  
-  /* Перебиваем стандартные настройки Harlowe: делаем кнопки на 100% непрозрачными */
   opacity: 1 !important; 
   transition: all 0.2s ease;
 }
 
-/* Эффект при наведении на закрашенную круговую кнопку */
 tw-icon:hover {
   color: #ffffff; 
   border-color: #00bfff;
@@ -117,10 +115,61 @@ tw-icon:hover {
   opacity: 1 !important;
 }
 
-/* Адаптивность для экранов ноутбуков */
-@media screen and (max-width: 1250px) {
+/* ==========================================================================
+   АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА (ЭКРАНЫ МЕНЕЕ 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  
+  /* Уменьшаем шаг сетки на фоне, чтобы не рябило */
+  tw-story {
+    background-size: 25px 25px;
+    padding: 15px; /* Защитные отступы по краям экрана смартфона */
+    align-items: flex-start; /* Разрешаем скролл, если текст длинный */
+    padding-top: 30px;
+  }
+
+  /* Сжимаем карточку и уменьшаем шрифт */
+  tw-passage {
+    font-size: 18px; /* Оптимальный размер для чтения с телефона */
+    padding: 30px 20px; /* Меньше внутренние отступы, больше места для текста */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 51, 153, 0.05);
+    margin-bottom: 100px; /* Место снизу, чтобы текст не перекрывался плавающими кнопками */
+  }
+
+  /* Корректируем мобильный заголовок */
+  tw-passage h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  /* Адаптируем варианты выбора под размер пальца */
+  tw-link, .enchantment-link {
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin-top: 12px;
+  }
+
+  /* Переносим кнопки возврата вниз экрана (Мобильный UX) */
   tw-sidebar {
-    left: 20px; 
+    position: fixed;
+    top: auto;
+    bottom: 20px; /* Прижимаем к нижнему краю */
+    left: 20px;   /* Слева */
+    transform: none;
+    flex-direction: row; /* Располагаем стрелки горизонтально в ряд, если их две */
+    z-index: 999;
+  }
+
+  /* Уменьшаем габариты круглых кнопок на телефоне */
+  tw-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 30px;
+    margin-bottom: 0;
+    margin-right: 12px; /* Отступ между кнопками в ряду */
+    box-shadow: 0 4px 12px rgba(0, 51, 153, 0.2);
   }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Начало" tags="" position="22000,11900" size="100,100">Оцените результаты лабораторных исследований грунта. В каком диапазоне находится текущая концентрация общих нефтяных углеводородов (TPH)?
 
